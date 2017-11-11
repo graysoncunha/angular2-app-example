@@ -18,7 +18,7 @@
                 <tr *ngFor="let c of contatos" [routerLink]="['/contato/save', c.id]">
                     <td>{{c.nome}}</td>
                     <td>{{c.email}}</td>
-                    <td>{{c.telefone}}}</td>
+                    <td>{{c.telefone}}</td>
                     <td><button class="btn btn-danger">Deletar</button></td>
                 </tr>
             </tbody>

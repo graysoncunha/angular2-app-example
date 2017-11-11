@@ -14,7 +14,7 @@ const contatoRoutes: Routes = [
         component: ContatoDetalheComponent
     },
     {
-        path: 'contato/save:id',
+        path: 'contato/save/:id',
         component: ContatoDetalheComponent
     }
 

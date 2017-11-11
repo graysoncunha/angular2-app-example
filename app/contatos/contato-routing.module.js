@@ -9,6 +9,7 @@ const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
 const contatos_lista_component_1 = require("./contatos-lista.component");
 const contato_detalhe_component_1 = require("./contato-detalhe.component");
+//Vetor constant com o caminho para seus respectivos component
 const contatoRoutes = [
     {
         path: 'contato',
@@ -19,7 +20,7 @@ const contatoRoutes = [
         component: contato_detalhe_component_1.ContatoDetalheComponent
     },
     {
-        path: 'contato/save:id',
+        path: 'contato/save/:id',
         component: contato_detalhe_component_1.ContatoDetalheComponent
     }
 ];
@@ -28,6 +29,7 @@ let ContatoRoutingModule = class ContatoRoutingModule {
 ContatoRoutingModule = __decorate([
     core_1.NgModule({
         imports: [
+            //Starta as rotas para o módulo de contatos, com as segintes rotas passada por parâmetros
             router_1.RouterModule.forChild(contatoRoutes)
         ],
         exports: [

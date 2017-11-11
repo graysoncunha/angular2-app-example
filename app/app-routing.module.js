@@ -19,6 +19,7 @@ let AppRoutingModule = class AppRoutingModule {
 AppRoutingModule = __decorate([
     core_1.NgModule({
         imports: [
+            //Starta o módulo de rotas para a raiz, ou seja, para o modulo app
             router_1.RouterModule.forRoot(appRoutes)
         ],
         exports: [

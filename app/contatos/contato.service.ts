@@ -10,9 +10,14 @@ export class ContatoService{
         return Promise.resolve(CONTATOS);
     }
 
+    getContato(id: number): Promise<Contato>{
+         return this.getContatos()
+         .then((contatos: Contato[]) => contatos.find((contato) => contato.id === id));
+    }
+
     getContatosSlowly(): Promise<Contato[]>{
         return new Promise((resolve, reject) =>{
-            setTimeout(resolve, 2000);
+            setTimeout(resolve, 500);
         })
     .then(() => {console.log("Primeiro then");
         return  "Curso Angular 2 Plinio Naves";
@@ -25,7 +30,7 @@ export class ContatoService{
             setTimeout(() => {
                 console.log("Continuando depois de 4 segundos...");
                 resolve2();
-            }, 4000)
+            }, 500)
         })
     })
     .then(() => {
