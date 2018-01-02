@@ -1,24 +1,37 @@
 <div class="container"> 
     <h2>Salvar contato</h2>
 
-    <form>
-        <div class="form-group">
-            <label for="nome">Nome</label>
-            <input type="text" class="form-control" placeholder="Insira o nome" />
+    <form (ngSubmit)="onSubmit()" #contatoForm="ngForm" novalidate>
+        <div [ngClass]="getFormGroupClass(nome.valid, nome.pristine)">
+            <label for="nome" class="form-control-label">Nome</label>
+            <input type="text" placeholder="Insira o nome" #nome="ngModel"name="nome"
+            [ngClass]="getFormControlClass(nome.valid, nome.pristine)" 
+            required
+            [(ngModel)]="contato.nome">
+            <div class="form-control-feedback" [hidden]="nome.valid || nome.pristine"> O campo nome é obrigatório</div>
         </div>
 
-        <div class="form-group">
+        <div [ngClass]="getFormGroupClass(email.valid, email.pristine)">
             <label for="email">Email</label>
-            <input type="email" class="form-control" placeholder="Insira o email" />
+            <input type="email" placeholder="Insira o email" #email="ngModel"name="email"
+            [ngClass]="getFormControlClass(email.valid, email.pristine)"
+            required
+            [(ngModel)]="contato.email"/>
+            <div class="form-control-feedback" [hidden]="email.valid || email.pristine"> O campo email é obrigatório</div>
         </div>
 
-        <div class="form-group">
+        <div [ngClass]="getFormGroupClass(telefone.valid, telefone.pristine)">
             <label for="nome">Telefone</label>
-            <input type="text" class="form-control" placeholder="Insira o telefone" />
+            <input type="text" placeholder="Insira o telefone" name="telefone" #telefone="ngModel"
+            [ngClass]="getFormControlClass(telefone.valid, telefone.pristine)"
+            required
+            [(ngModel)]="contato.telefone" />
+            <div class="form-control-feedback" [hidden]="telefone.valid || telefone.pristine"> O campo telefone é obrigatório</div>
         </div>
 
-        <button class="btn btn-success">Salvar</button>
+        <button class="btn btn-success" [disabled]="!contatoForm.form.valid">Salvar</button>
         <a class="btn btn-secondary" routerLink="/">Voltar</a>
 
     </form>
+
 </div>

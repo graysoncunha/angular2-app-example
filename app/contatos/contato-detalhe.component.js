@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+const contatos_model_1 = require("./contatos.model");
 const contato_service_1 = require("./contato.service");
 const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
@@ -17,17 +18,47 @@ let ContatoDetalheComponent = class ContatoDetalheComponent {
         this.contatoService = contatoService;
         this.route = route;
         this.location = location;
+        this.isNew = true;
     }
     ngOnInit() {
         console.log('on init');
+        this.contato = new contatos_model_1.Contato(0, '', '', '');
         this.route.params.forEach((params) => {
             let id = +params['id'];
             console.log(id);
-            this.contatoService.getContato(id)
-                .then((contato) => {
-                console.log(contato);
-            });
+            if (id) {
+                this.isNew = false;
+                this.contatoService.getContato(id)
+                    .then((contato) => {
+                    this.contato = contato;
+                });
+            }
         });
+    }
+    teste() {
+        console.log(this.contato);
+    }
+    getFormGroupClass(isValid, isPristine) {
+        return {
+            'form-group': true,
+            'has-danger': !isValid && !isPristine,
+            'has-success': isValid && !isPristine
+        };
+    }
+    getFormControlClass(isValid, isPristine) {
+        return {
+            'form-control': true,
+            'form-control-danger': !isValid && !isPristine,
+            'form-control-success': isValid && !isPristine
+        };
+    }
+    onSubmit() {
+        if (this.isNew) {
+            console.log('cadastrar contato');
+        }
+        else {
+            console.log('alterar contato');
+        }
     }
 };
 ContatoDetalheComponent = __decorate([
