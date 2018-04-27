@@ -5,6 +5,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from  '@angular/forms';
 import { ContatoRoutingModule } from "./contato-routing.module";
 import { ContatoService } from "./contato.service";
+import { ContatoBuscaComponent } from './contato-busca.component';
 
 @NgModule({
     imports:[
@@ -13,10 +14,12 @@ import { ContatoService } from "./contato.service";
         FormsModule
     ],
     declarations: [
+        ContatoBuscaComponent,
         ContatoDetalheComponent,
         ContatosListaComponent
     ],
     exports: [
+        ContatoBuscaComponent,
         ContatosListaComponent
     ],
     providers: [

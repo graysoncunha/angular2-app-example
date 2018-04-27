@@ -35,7 +35,7 @@ export class ContatoDetalheComponent implements OnInit {
 
                 this.isNew = false;
 
-                this.contatoService.getContato(id)
+                this.contatoService.find(id)
                     .then((contato: Contato) => {
                         this.contato = contato;
                     })
@@ -64,12 +64,22 @@ export class ContatoDetalheComponent implements OnInit {
     }
 
     onSubmit(): void {
+        let promise;
+
         if(this.isNew){
             console.log('cadastrar contato');
+            promise = this.contatoService.create(this.contato);
         }
         else{
             console.log('alterar contato');
+            promise = this.contatoService.update(this.contato);
         }
+
+        promise.then(contato => this.voltar());
+    }
+
+    voltar(): void {
+        this.location.back();
     }
 
 }
